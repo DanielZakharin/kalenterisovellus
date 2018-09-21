@@ -14,7 +14,7 @@ import android.view.ViewGroup
  */
 
 abstract class BaseFragment<T: ViewDataBinding>(@LayoutRes val layout: Int) : Fragment(){
-    private lateinit var binding: T
+    protected lateinit var binding: T
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
