@@ -13,7 +13,7 @@ import com.daniel.ks.Utils.log
 
 class CalendarViewModel(app: Application) : AndroidViewModel(app) {
     val title = ObservableField<String>()
-    val DB = RoomRepo(app)
+    private val DB = RoomRepo(app)
     val all by lazy { DB.allEvents }
     val allCount by lazy {
         Transformations.map(all) {

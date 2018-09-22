@@ -10,37 +10,25 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/title_holder"
+
+        <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="title"
-            app:layout_constraintTop_toTopOf="parent">
-            <android.support.design.widget.TextInputEditText
-                android:id="@+id/title_value"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@={vm.title}"/>
-        </android.support.design.widget.TextInputLayout>
+            android:layout_height="match_parent"
+            android:id="@+id/calendar_recycler_view"
+            app:layoutManager="android.support.v7.widget.GridLayoutManager" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text='@{"ENTRIES: " + vm.allCount}'
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_holder"/>
-
-        <Button
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/make"
             style="@style/ButtonSolid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="make"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginBottom="@dimen/default_margin"
-            android:onClick="@{vm::showEntryDialog}"/>
+            android:onClick="@{vm::showEntryDialog}"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:src="@drawable/ic_add"
+            />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

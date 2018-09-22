@@ -12,7 +12,7 @@ import org.joda.time.LocalTime
 Note: Use var for Room objects
  */
 
-@Entity(tableName = "events")
+@Entity(tableName = "events", foreignKeys = [ForeignKey(entity = Day::class, childColumns = ["day_id"], parentColumns = ["event_id"])])
 data class Event(
 
         @ColumnInfo(name = "name")
@@ -22,6 +22,10 @@ data class Event(
         @ColumnInfo(name = "alert_time")
         @Nullable
         var alertTime: DateTime? = null,
+
+        @ColumnInfo(name = "day_id")
+        @NonNull
+        val dayID: Int,
 
         @PrimaryKey(autoGenerate = true)
         @NonNull
