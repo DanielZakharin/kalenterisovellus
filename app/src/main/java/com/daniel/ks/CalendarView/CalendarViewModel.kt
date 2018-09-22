@@ -4,10 +4,12 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.Transformations
 import android.databinding.ObservableField
-import com.daniel.ks.Room.Event
+import android.view.View
+import com.daniel.ks.MainActivity
 import com.daniel.ks.Room.RoomRepo
+import com.daniel.ks.Utils.ActionLiveData
+import com.daniel.ks.Utils.getActivity
 import com.daniel.ks.Utils.log
-import org.joda.time.DateTime
 
 class CalendarViewModel(app: Application) : AndroidViewModel(app) {
     val title = ObservableField<String>()
@@ -15,16 +17,15 @@ class CalendarViewModel(app: Application) : AndroidViewModel(app) {
     val all by lazy { DB.allEvents }
     val allCount by lazy {
         Transformations.map(all) {
-            it.size
+            it.joinToString {
+                it.name
+            }
         }
     }
 
-    fun makeEntry() {
-        log("Pressed make")
-        DB.insertEvent(Event(
-                "this is test",
-                DateTime(DateTime.now().millis + 900000)
-        ))
+    val onShowEventDialog = ActionLiveData<Unit>()
+    fun showEntryDialog(view: View) {
+        onShowEventDialog.emit(Unit)
     }
 
     fun getAll() {

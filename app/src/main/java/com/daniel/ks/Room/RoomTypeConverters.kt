@@ -10,13 +10,13 @@ class RoomTypeConverters {
     companion object {
         @TypeConverter
         @JvmStatic
-        fun fromLocalTimeToString(time: DateTime): Long {
-            return time.millis
+        fun fromLocalTimeToString(time: DateTime?): Long? {
+            return time?.millis ?: null
         }
 
         @TypeConverter
         @JvmStatic
-        fun fromStringToLocalTime(long: Long): DateTime? {
+        fun fromStringToLocalTime(long: Long?): DateTime? {
             return DateTime(long)
         }
     }

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">KalenteriSovellus</string>
+    <string name="common_new_event">New Event</string>
+    <string name="common_event_name">Event name</string>
+    <string name="common_time">Time</string>
+    <string name="common_date">Date</string>
+    <string name="common_create">Create</string>
 </resources>

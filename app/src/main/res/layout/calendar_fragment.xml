@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text='@{"COUNT: " + vm.allCount}'
+            android:text='@{"ENTRIES: " + vm.allCount}'
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title_holder"/>
@@ -39,21 +39,8 @@
             android:text="make"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/get"
             android:layout_marginBottom="@dimen/default_margin"
-            android:onClick="@{_ -> vm.makeEntry()}"/>
-
-        <Button
-            android:id="@+id/get"
-            style="@style/ButtonText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="get"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/make"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="@dimen/default_margin"
-            android:onClick="@{_ -> vm.makeEntry()}"/>
+            android:onClick="@{vm::showEntryDialog}"/>
 
     </android.support.constraint.ConstraintLayout>
 </layout>

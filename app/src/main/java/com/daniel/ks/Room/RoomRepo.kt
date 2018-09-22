@@ -12,7 +12,7 @@ class RoomRepo(app: Application) {
     val allEvents by lazy {  eventDao.getAll() }
 
     fun insertEvent(event: Event) {
-        GlobalScope.launch(Dispatchers.Default, CoroutineStart.DEFAULT, null, {
+        GlobalScope.launch(Dispatchers.Default, CoroutineStart.DEFAULT, block = {
             eventDao.insert(event)
         })
     }

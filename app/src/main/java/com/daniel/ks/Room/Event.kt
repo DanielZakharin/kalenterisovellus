@@ -4,24 +4,29 @@ import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*
 import android.arch.persistence.room.OnConflictStrategy.REPLACE
 import android.support.annotation.NonNull
+import android.support.annotation.Nullable
 import org.joda.time.DateTime
 import org.joda.time.LocalTime
+
+/*
+Note: Use var for Room objects
+ */
 
 @Entity(tableName = "events")
 data class Event(
 
         @ColumnInfo(name = "name")
         @NonNull
-        val name: String = "",
+        var name: String = "",
 
         @ColumnInfo(name = "alert_time")
-        @NonNull
-        val alertTime: DateTime,
+        @Nullable
+        var alertTime: DateTime? = null,
 
         @PrimaryKey(autoGenerate = true)
         @NonNull
         @ColumnInfo(name = "event_id")
-        val eventID: Int = 0
+        var eventID: Int = 0
 )
 
 @Dao
