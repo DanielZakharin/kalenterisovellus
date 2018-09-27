@@ -12,7 +12,7 @@ data class Day(
         @NonNull
         val date: DateTime,
 
-        @ColumnInfo(name = "date_id")
+        @ColumnInfo(name = "event_id")
         @PrimaryKey(autoGenerate = true)
         val dayID : Int = 0
 )

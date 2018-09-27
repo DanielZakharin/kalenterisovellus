@@ -1,10 +1,12 @@
 package com.daniel.ks.Utils
 
+import org.joda.time.DateTime
 import org.joda.time.LocalTime
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.format.DateTimeFormatter
 
 private const val DATEFORMAT = "yyyy-MM-ddThh:mm:ss.nnnnnn+|-hh:mm"
+private const val READABLEFORMAT = "dd.MM.yyyy hh:mm"
 
 fun LocalTime.toRoomString(): String {
     return this.toString(getDateFormatter(DATEFORMAT))
@@ -16,6 +18,10 @@ fun String.toLocalTime(): LocalTime? {
     } catch (_:Exception) {
         null
     }
+}
+
+fun DateTime.toUIString(): String {
+    return this.toString(getDateFormatter(READABLEFORMAT))
 }
 
 /*

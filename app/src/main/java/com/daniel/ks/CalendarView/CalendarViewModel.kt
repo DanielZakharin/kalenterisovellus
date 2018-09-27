@@ -5,11 +5,8 @@ import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.Transformations
 import android.databinding.ObservableField
 import android.view.View
-import com.daniel.ks.MainActivity
 import com.daniel.ks.Room.RoomRepo
 import com.daniel.ks.Utils.ActionLiveData
-import com.daniel.ks.Utils.getActivity
-import com.daniel.ks.Utils.log
 
 class CalendarViewModel(app: Application) : AndroidViewModel(app) {
     val title = ObservableField<String>()
@@ -29,6 +26,6 @@ class CalendarViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     fun getAll() {
-        log("Pressed get")
+        print("Pressed get")
     }
 }

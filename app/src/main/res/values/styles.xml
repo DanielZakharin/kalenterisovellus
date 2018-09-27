@@ -18,6 +18,7 @@
     </style>
     <style name="H1" parent="TextAppearance.AppCompat.Medium">
         <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/corben</item>
     </style>
 
 </resources>

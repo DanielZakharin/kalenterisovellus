@@ -24,12 +24,12 @@ data class Event(
         var alertTime: DateTime? = null,
 
         @ColumnInfo(name = "day_id")
-        @NonNull
-        val dayID: Int,
+        var dayID: Int = 0,
+
 
         @PrimaryKey(autoGenerate = true)
         @NonNull
-        @ColumnInfo(name = "event_id")
+        @ColumnInfo(name = "date_id")
         var eventID: Int = 0
 )
 
