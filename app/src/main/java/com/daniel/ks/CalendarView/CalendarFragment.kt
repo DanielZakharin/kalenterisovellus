@@ -4,7 +4,6 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +15,8 @@ import com.daniel.ks.Utils.BaseFragment
 import com.daniel.ks.databinding.CalendarFragmentBinding
 
 class CalendarFragment : BaseFragment<CalendarFragmentBinding>(R.layout.calendar_fragment), NewEventReceiver {
+
+
     val vm get() = ViewModelProviders.of(this).get(CalendarViewModel::class.java)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
@@ -29,7 +30,7 @@ class CalendarFragment : BaseFragment<CalendarFragmentBinding>(R.layout.calendar
         vm.onShowEventDialog.observe(this, Observer {
             getMainActivity()?.showNewEventDialog(this)
         })
-        vm.all.observe(this, Observer {
+        vm.currentMonth.observe(this, Observer {
             it?.let {
                 binding.calendarRecyclerView.adapter = CalendarMonthAdapter(it)
             }

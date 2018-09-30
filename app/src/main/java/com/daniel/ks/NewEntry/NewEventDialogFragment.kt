@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import com.daniel.ks.R
 import com.daniel.ks.Room.Event
 import com.daniel.ks.databinding.NewEventDialogBinding
+import org.joda.time.DateTime
 import java.lang.IllegalStateException
 
 interface NewEventReceiver {
@@ -22,9 +23,9 @@ class NewEventDialogFragment : DialogFragment() {
     val vm get() = ViewModelProviders.of(this).get(NewEventViewModel::class.java)
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        vm.onNewEvent.observe(this, Observer { newEvent ->
+        vm.onNewEvent.observe(this, Observer { event ->
             (targetFragment as? NewEventReceiver)?.let {
-                it.onNewEventMade(newEvent!!)
+                it.onNewEventMade(event!!)
             } ?: throw IllegalStateException("NO TARGET FOR NEW EVENT")
         })
         binding = makeBinding()

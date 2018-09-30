@@ -8,7 +8,7 @@ import android.content.Context
 
 private const val DB_NAME = "calendar_db"
 
-@Database(entities = [Event::class, Day::class], version = 2)
+@Database(entities = [Event::class], version = 2)
 @TypeConverters(RoomTypeConverters::class)
 abstract class CalendarDatabase: RoomDatabase() {
     abstract fun eventDao(): EventDao

@@ -11,22 +11,23 @@ import com.daniel.ks.Utils.ActionLiveData
 import org.joda.time.DateTime
 
 class NewEventViewModel(app: Application) : AndroidViewModel(app), DatePickerDialog.OnDateSetListener {
-    override fun onDateSet(p0: DatePicker?, year: Int, month: Int, day: Int) {
-        date.set(DateTime(year, month, day, 1, 1))
+    override fun onDateSet(picker: DatePicker?, year: Int, month: Int, day: Int) {
+        date.set(DateTime(year, month + 1, day, 1, 1))
     }
 
     val title = ObservableField<String>()
     val date = ObservableField<DateTime>(DateTime.now())
     val onNewEvent = ActionLiveData<Event>()
     fun buildEvent(view: View) {
-        onNewEvent.emit(
-                Event(
-                        title.get() ?: throw IllegalStateException("NO TITLE PASSED")
-                )
+        val e = Event(
+                title.get() ?: throw IllegalStateException("NO TITLE PASSED"),
+                date = date.get() ?: throw IllegalStateException("NO DATE SUPPLIED")
         )
+        onNewEvent.emit(e)
     }
     fun onDateClick(view: View) {
-       DatePickerDialog(view.context, this, 2018, 0, 1).apply {
+        val n = DateTime.now()
+       DatePickerDialog(view.context, this, n.year().get(), n.monthOfYear().get(), n.dayOfMonth).apply {
            datePicker.minDate = DateTime.now().millis
        }.show()
     }
