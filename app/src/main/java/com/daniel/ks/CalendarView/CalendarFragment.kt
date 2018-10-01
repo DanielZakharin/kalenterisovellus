@@ -4,7 +4,6 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -14,35 +13,16 @@ import com.daniel.ks.R
 import com.daniel.ks.Room.Event
 import com.daniel.ks.Room.RoomRepo
 import com.daniel.ks.Utils.BaseFragment
+import com.daniel.ks.Utils.log
 import com.daniel.ks.databinding.CalendarFragmentBinding
 
-class CalendarFragment : BaseFragment<CalendarFragmentBinding>(R.layout.calendar_fragment), NewEventReceiver {
+class CalendarFragment : BaseFragment<CalendarFragmentBinding>(R.layout.calendar_fragment_month), NewEventReceiver, CalendarMonthClickListener {
 
     val vm get() = ViewModelProviders.of(this).get(CalendarViewModel::class.java)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
         binding.vm = vm
         binding.calendarRecyclerView.layoutManager = GridLayoutManager(activity, 7)
-        /*binding.calendarRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            private var direction: Int = 0
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-                direction = dy
-            }
-
-            override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                when (newState) {
-                    //SCROLL_STATE_IDLE, SCROLL_STATE_DRAGGING or SCROLL_STATE_SETTLING.
-                    RecyclerView.SCROLL_STATE_IDLE -> {
-                        if (direction > 0) {
-                            vm.loadNextMonth()
-                        } else if (direction < 0) {
-                            vm.loadPrevMonth()
-                        }
-                    }
-                }
-            }
-        })*/
         binding.calendarRecyclerView.setOnTouchListener(object : View.OnTouchListener {
             var start = 0f
             var direction = 0
@@ -74,7 +54,7 @@ class CalendarFragment : BaseFragment<CalendarFragmentBinding>(R.layout.calendar
         })
         vm.currentMonth.observe(this, Observer {
             it?.let {
-                binding.calendarRecyclerView.adapter = CalendarMonthAdapter(it, binding.calendarRecyclerView.height)
+                binding.calendarRecyclerView.adapter = CalendarMonthAdapter(it, binding.calendarRecyclerView.height, this)
             }
         })
         vm.all.observe(this, Observer {
@@ -84,5 +64,10 @@ class CalendarFragment : BaseFragment<CalendarFragmentBinding>(R.layout.calendar
 
     override fun onNewEventMade(newEvent: Event) {
         RoomRepo(activity?.application!!).insertEvent(newEvent)
+    }
+
+    override fun onDayClicked(day: Int) {
+        //switch to day view
+        log("clicked on $day")
     }
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.daniel.ks.CalendarView.CalendarViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/MonthEvent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/calendar_header_background"
+            app:text_any="@{monthNum}" />
+
+        <TextView
+            style="@style/MonthEvent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:text_any="@{titles[0]}" />
+
+        <TextView
+            style="@style/MonthEvent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:text_any="@{titles[1]}" />
+
+        <TextView
+            style="@style/MonthEvent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:text_any="@{titles[2]}" />
+
+        <TextView
+            style="@style/MonthEvent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:text_any="@{titles[3]}" />
+
+    </LinearLayout>
+</layout>

@@ -10,3 +10,11 @@ private const val TAG = "KALENTERISOVELLUS"
 fun <T : Activity> View.getActivity(): T? {
     return context as? T
 }
+
+fun log(message: String) {
+    Log.v(TAG, message)
+}
+
+fun log(t: Throwable) {
+    Log.e(TAG, "", t)
+}

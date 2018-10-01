@@ -9,7 +9,11 @@ import com.daniel.ks.R
 import com.daniel.ks.Room.Event
 import com.daniel.ks.databinding.CalendarMonthCellBinding
 
-class CalendarMonthAdapter(initialEvents: List<Event>, val heightOfRow: Int) : RecyclerView.Adapter<CalendarMonthAdapter.MonthViewHolder>() {
+interface CalendarMonthClickListener{
+    fun onDayClicked(day: Int)
+}
+
+class CalendarMonthAdapter(initialEvents: List<Event>, val heightOfRow: Int, val clickHandler: CalendarMonthClickListener) : RecyclerView.Adapter<CalendarMonthAdapter.MonthViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MonthViewHolder {
         return MonthViewHolder(
                 DataBindingUtil.inflate(LayoutInflater.from(parent.context), viewType, parent, false)
@@ -21,6 +25,9 @@ class CalendarMonthAdapter(initialEvents: List<Event>, val heightOfRow: Int) : R
     }
 
     override fun onBindViewHolder(holder: MonthViewHolder, position: Int) {
+        holder.itemView.setOnClickListener {
+            clickHandler.onDayClicked(position+1)
+        }
         delegateBinding(holder, cells[position], position)
     }
 
@@ -74,6 +81,8 @@ class CalendarMonthAdapter(initialEvents: List<Event>, val heightOfRow: Int) : R
         }
 
     }
+
+
 
     init {
         events = initialEvents
