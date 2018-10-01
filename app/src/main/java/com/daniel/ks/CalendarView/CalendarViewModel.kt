@@ -9,22 +9,31 @@ import android.view.View
 import com.daniel.ks.Room.RoomRepo
 import com.daniel.ks.Utils.ActionLiveData
 import org.joda.time.DateTime
+import java.lang.IllegalStateException
 
 class CalendarViewModel(app: Application) : AndroidViewModel(app) {
     val title = ObservableField<String>()
     private val DB = RoomRepo(app)
-    val all by lazy { DB.allEvents }
     val displayedMonth = MutableLiveData<DateTime>().apply {
         value = DateTime.now()
     }
     val currentMonth = Transformations.switchMap(displayedMonth){
         val from = DateTime(it.year, it.monthOfYear, 1, 0, 0)
-        val to = DateTime(it.year, it.monthOfYear, 30, 23, 59)
+        val to = DateTime(it.year, it.monthOfYear, it.dayOfMonth().maximumValue, 23, 59)
         DB.getEventsInRange(from, to)
     }
-
+    val all = DB.allEvents
     val onShowEventDialog = ActionLiveData<Unit>()
     fun showEntryDialog(view: View) {
         onShowEventDialog.emit(Unit)
+    }
+    fun loadNextMonth() {
+        val old = displayedMonth.value ?: throw IllegalStateException("NO MONTH")
+        displayedMonth.value = old.minusMonths(1)
+    }
+
+    fun loadPrevMonth() {
+        val old = displayedMonth.value ?: throw IllegalStateException("NO MONTH")
+        displayedMonth.value = old.plusMonths(1)
     }
 }

@@ -9,7 +9,7 @@ import com.daniel.ks.R
 import com.daniel.ks.Room.Event
 import com.daniel.ks.databinding.CalendarMonthCellBinding
 
-class CalendarMonthAdapter(initialEvents: List<Event>) : RecyclerView.Adapter<CalendarMonthAdapter.MonthViewHolder>() {
+class CalendarMonthAdapter(initialEvents: List<Event>, val heightOfRow: Int) : RecyclerView.Adapter<CalendarMonthAdapter.MonthViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MonthViewHolder {
         return MonthViewHolder(
                 DataBindingUtil.inflate(LayoutInflater.from(parent.context), viewType, parent, false)
@@ -21,10 +21,10 @@ class CalendarMonthAdapter(initialEvents: List<Event>) : RecyclerView.Adapter<Ca
     }
 
     override fun onBindViewHolder(holder: MonthViewHolder, position: Int) {
-        delegateBinding(holder, cells[position])
+        delegateBinding(holder, cells[position], position)
     }
 
-    private fun <T : ViewDataBinding> delegateBinding(of: MonthViewHolder, cell: MonthCell<T>) = cell.bind(of.binding as T)
+    private fun <T : ViewDataBinding> delegateBinding(of: MonthViewHolder, cell: MonthCell<T>, index: Int) = cell.bind(of.binding as T, index)
 
     override fun getItemViewType(position: Int): Int {
         return cells[position].layoutRes
@@ -44,7 +44,7 @@ class CalendarMonthAdapter(initialEvents: List<Event>) : RecyclerView.Adapter<Ca
             it.date.dayOfMonth().get()
         }
         for ((day, events) in grouped) {
-            listByMonths[day].addAll(events)
+            listByMonths[day-1].addAll(events) //arrays start at 0, days start at 1. compensate for that
         }
         print("GROUPED: $grouped")
         listByMonths.forEach {
@@ -58,13 +58,19 @@ class CalendarMonthAdapter(initialEvents: List<Event>) : RecyclerView.Adapter<Ca
 
     private abstract class MonthCell<in T : ViewDataBinding> {
         abstract val layoutRes: Int
-        abstract fun bind(binding: T)
+        abstract fun bind(binding: T, index: Int)
     }
 
-    private class MonthCellWithEvents(val events: List<Event>) : MonthCell<CalendarMonthCellBinding>() {
+    private inner class MonthCellWithEvents(val events: List<Event>) : MonthCell<CalendarMonthCellBinding>() {
         override val layoutRes: Int = R.layout.calendar_month_cell
-        override fun bind(binding: CalendarMonthCellBinding) {
-            binding.titles = events
+        override fun bind(binding: CalendarMonthCellBinding, index: Int) {
+            binding.root.layoutParams = binding.root.layoutParams.apply {
+                height = this@CalendarMonthAdapter.heightOfRow / 5
+            }
+            binding.titles = events.map {
+                it.name
+            }
+            binding.monthNum = index + 1 //number of the month
         }
 
     }
