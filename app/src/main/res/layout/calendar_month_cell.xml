@@ -1,53 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="titles"
             type="java.util.List" />
+
         <variable
             name="monthNum"
-            type="Integer"/>
+            type="Integer" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:orientation="vertical"
         android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp">
+        android:layout_marginEnd="1dp"
+        android:orientation="vertical"
+        android:padding="@dimen/default_margin_half">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                style="@style/MonthEvent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/calendar_header_background"
+                app:text_any="@{monthNum}"
+                tools:text="1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintDimensionRatio="1"
+                android:textAlignment="center"
+                />
+        </android.support.constraint.ConstraintLayout>
 
         <TextView
+            style="@style/MonthEvent"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:text_any="@{monthNum}"
             android:layout_weight="1"
-            android:background="@drawable/calendar_header_background"
-            style="@style/MonthEvent"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:text_any="@{titles[0]}"
-            android:layout_weight="1"
-            style="@style/MonthEvent"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:text_any="@{titles[1]}"
-            android:layout_weight="1"
-            style="@style/MonthEvent"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:text_any="@{titles[2]}"
-            android:layout_weight="1"
-            style="@style/MonthEvent"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:text_any="@{titles[3]}"
-            android:layout_weight="1"
-            style="@style/MonthEvent"/>
+            app:text_any="@{titles[0]}" />
 
+        <TextView
+            style="@style/MonthEvent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:text_any="@{titles[1]}" />
+
+        <TextView
+            style="@style/MonthEvent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:text_any="@{titles[2]}" />
+
+        <TextView
+            style="@style/MonthEvent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:text_any="@{titles[3]}" />
     </LinearLayout>
 </layout>

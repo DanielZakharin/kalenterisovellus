@@ -2,6 +2,7 @@ package com.daniel.ks.CalendarView
 
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
+import android.os.Build
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -73,6 +74,10 @@ class CalendarMonthAdapter(initialEvents: List<Event>, val heightOfRow: Int, val
         override fun bind(binding: CalendarMonthCellBinding, index: Int) {
             binding.root.layoutParams = binding.root.layoutParams.apply {
                 height = this@CalendarMonthAdapter.heightOfRow / 5
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                // the view being shared
+                binding.root.transitionName = "transition$index"
             }
             binding.titles = events.map {
                 it.name
