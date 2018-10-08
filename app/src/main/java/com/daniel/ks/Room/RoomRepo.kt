@@ -10,12 +10,15 @@ import org.joda.time.DateTime
 class RoomRepo(app: Application) {
     val db = CalendarDatabase.getInstance(app) ?: throw NullPointerException("COULD NOT MAKE DB")
     private val eventDao = db.eventDao()
-    val allEvents by lazy {  eventDao.getAll() }
+    val allEvents by lazy { eventDao.getAll() }
     fun getEventsInRange(from: DateTime, to: DateTime) = eventDao.getEventsInRange(from, to)
 
-    fun insertEvent(event: Event) {
+    fun insertEvent(newEvent: Event, completion: (Long) -> Unit) {
         GlobalScope.launch(Dispatchers.Default, CoroutineStart.DEFAULT, block = {
-            eventDao.insert(event)
+            completion(insertEvent(newEvent))
         })
+    }
+    private fun insertEvent(event: Event): Long {
+        return eventDao.insert(event)
     }
 }

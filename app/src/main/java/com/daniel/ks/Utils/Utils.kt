@@ -18,3 +18,6 @@ fun log(message: String) {
 fun log(t: Throwable) {
     Log.e(TAG, "", t)
 }
+
+const val ALARM_REQUEST_CODE = 1234
+const val ALARM_EVENT_ID = "ALARM_EVENT_ID"

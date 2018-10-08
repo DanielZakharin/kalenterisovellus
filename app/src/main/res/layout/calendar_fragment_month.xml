@@ -13,11 +13,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
+        <!--<android.support.v7.widget.RecyclerView
             android:id="@+id/calendar_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="android.support.v7.widget.GridLayoutManager" />
+            app:layoutManager="android.support.v7.widget.GridLayoutManager" />-->
+        <GridLayout
+            android:id="@+id/grid_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alignmentMode="alignBounds"
+            android:columnCount="7"
+            android:rowCount="5" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/make"

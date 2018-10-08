@@ -27,6 +27,7 @@ class NewEventDialogFragment : DialogFragment() {
             (targetFragment as? NewEventReceiver)?.let {
                 it.onNewEventMade(event!!)
             } ?: throw IllegalStateException("NO TARGET FOR NEW EVENT")
+            dismiss()
         })
         binding = makeBinding()
         return android.support.v7.app.AlertDialog.Builder(context!!)

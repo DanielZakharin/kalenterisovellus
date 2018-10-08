@@ -33,16 +33,23 @@ data class Event(
         @ColumnInfo(name = "date_id")
         var eventID: Int = 0
 
-)
+) {
+    fun withID(id: Int): Event = this.apply {
+        eventID = id
+    }
+}
 
 @Dao
 interface EventDao {
     @Query("SELECT * FROM events")
     fun getAll(): LiveData<List<Event>>
 
-    @Query("select * from events where date between :from and :to")
+    @Query("select * from events where date between :from and :to order by date asc")
     fun getEventsInRange(from: DateTime, to: DateTime): LiveData<List<Event>>
 
     @Insert(onConflict = REPLACE)
-    fun insert(event: Event)
+    fun insert(event: Event): Long
+
+    @Query("select * from events where date_id is :id")
+    fun getEventWithId(id: Int): LiveData<Event>
 }

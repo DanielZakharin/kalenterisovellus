@@ -11,14 +11,27 @@
     <style name="ButtonSolid" parent="Base.TextAppearance.AppCompat.Widget.Button">
         <item name="android:backgroundTint">@color/button_background_color</item>
         <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">false</item>
     </style>
+
     <style name="ButtonText" parent="Base.TextAppearance.AppCompat.Widget.Button">
         <item name="android:background">@null</item>
         <item name="android:textColor">@color/button_background_color</item>
+        <item name="android:textAllCaps">false</item>
     </style>
+
+    <style name="AlarmTitle" parent="TextAppearance.AppCompat.Large.Inverse">
+        <item name="android:textSize">48dp</item>
+    </style>
+
+    <style name="AlarmSubTitle" parent="TextAppearance.AppCompat.Medium.Inverse">
+        <item name="android:textSize">24dp</item>
+    </style>
+
     <style name="H1" parent="TextAppearance.AppCompat.Medium">
         <item name="android:textColor">@color/black</item>
     </style>
+
     <style name="MonthEvent">
         <item name="android:autoSizeMaxTextSize">24sp</item>
         <item name="android:autoSizeMinTextSize">12sp</item>

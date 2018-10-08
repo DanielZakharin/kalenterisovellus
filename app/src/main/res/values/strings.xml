@@ -5,4 +5,6 @@
     <string name="common_time">Time</string>
     <string name="common_date">Date</string>
     <string name="common_create">Create</string>
+    <string name="alarm_snooze">Snooze</string>
+    <string name="alarm_dismiss">Dismiss</string>
 </resources>
