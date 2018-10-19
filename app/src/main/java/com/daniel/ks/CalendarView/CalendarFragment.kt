@@ -13,6 +13,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
+import com.daniel.ks.AlarmView.AlarmActivity
 import com.daniel.ks.MainActivity
 import com.daniel.ks.NewEntry.NewEventReceiver
 import com.daniel.ks.R
@@ -111,12 +112,12 @@ class CalendarFragment : BaseFragment<CalendarFragmentMonthBinding>(R.layout.cal
              * Add event ID as an extra to the intent
              * Give error if no alert time is specified
              */
-            val alarmIntent = Intent(context, MainActivity::class.java)
+            val alarmIntent = Intent(context, AlarmActivity::class.java)
             alarmIntent.putExtra(ALARM_EVENT_ID, event.eventID)
             val pendingIntent = PendingIntent.getActivity(context, ALARM_REQUEST_CODE, alarmIntent, 0)
             alarmManager.set(
                     AlarmManager.RTC_WAKEUP,
-                    event.alertTime?.millis ?: throw java.lang.IllegalStateException("NO ALERT TIME GIVEN"),
+                    event.alertTime?.millis ?: DateTime.now().millis + 1000 ?: throw java.lang.IllegalStateException("NO ALERT TIME GIVEN"),
                     pendingIntent)
         }
     }
