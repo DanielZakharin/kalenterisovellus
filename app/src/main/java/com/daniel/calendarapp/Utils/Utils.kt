@@ -1,7 +1,6 @@
-package com.daniel.ks.Utils
+package com.daniel.calendarapp.Utils
 
 import android.app.Activity
-import android.content.Context
 import android.util.Log
 import android.view.View
 

@@ -1,4 +1,4 @@
-package com.daniel.ks.NewEntry
+package com.daniel.calendarapp.NewEntry
 
 import android.app.Dialog
 import android.arch.lifecycle.Observer
@@ -7,10 +7,9 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.view.LayoutInflater
-import com.daniel.ks.R
-import com.daniel.ks.Room.Event
-import com.daniel.ks.databinding.NewEventDialogBinding
-import org.joda.time.DateTime
+import com.daniel.calendarapp.R
+import com.daniel.calendarapp.RoomObjects.Event
+import com.daniel.calendarapp.databinding.NewEventDialogBinding
 import java.lang.IllegalStateException
 
 interface NewEventReceiver {

@@ -1,13 +1,12 @@
-package com.daniel.ks.CalendarView
+package com.daniel.calendarapp.CalendarView
 
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.daniel.ks.R
-import com.daniel.ks.Utils.BaseFragment
-import com.daniel.ks.databinding.CalendarFragmentDayBinding
+import com.daniel.calendarapp.R
+import com.daniel.calendarapp.Utils.BaseFragment
+import com.daniel.calendarapp.databinding.CalendarFragmentDayBinding
 import org.joda.time.DateTime
 
 private const val ARG_ID = "ARG_ID"

@@ -1,4 +1,4 @@
-package com.daniel.ks.Utils
+package com.daniel.calendarapp.Utils
 
 import org.joda.time.DateTime
 import org.joda.time.LocalTime

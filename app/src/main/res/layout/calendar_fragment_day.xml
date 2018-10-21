@@ -5,7 +5,7 @@
     <data>
         <variable
             name="vm"
-            type="com.daniel.ks.CalendarView.CalendarViewModel" />
+            type="com.daniel.calendarapp.CalendarView.CalendarViewModel" />
     </data>
 
     <android.support.v7.widget.RecyclerView

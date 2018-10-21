@@ -1,4 +1,4 @@
-package com.daniel.ks.Room
+package com.daniel.calendarapp.RoomObjects
 
 import android.app.Application
 import kotlinx.coroutines.experimental.CoroutineStart

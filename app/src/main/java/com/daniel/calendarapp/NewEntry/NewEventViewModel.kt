@@ -1,4 +1,4 @@
-package com.daniel.ks.NewEntry
+package com.daniel.calendarapp.NewEntry
 
 import android.app.Application
 import android.app.DatePickerDialog
@@ -6,8 +6,8 @@ import android.arch.lifecycle.AndroidViewModel
 import android.databinding.ObservableField
 import android.view.View
 import android.widget.DatePicker
-import com.daniel.ks.Room.Event
-import com.daniel.ks.Utils.ActionLiveData
+import com.daniel.calendarapp.RoomObjects.Event
+import com.daniel.calendarapp.Utils.ActionLiveData
 import org.joda.time.DateTime
 
 class NewEventViewModel(app: Application) : AndroidViewModel(app), DatePickerDialog.OnDateSetListener {

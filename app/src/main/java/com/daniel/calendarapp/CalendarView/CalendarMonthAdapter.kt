@@ -1,4 +1,4 @@
-package com.daniel.ks.CalendarView
+package com.daniel.calendarapp.CalendarView
 
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
@@ -6,9 +6,9 @@ import android.os.Build
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.daniel.ks.R
-import com.daniel.ks.Room.Event
-import com.daniel.ks.databinding.CalendarMonthCellBinding
+import com.daniel.calendarapp.R
+import com.daniel.calendarapp.RoomObjects.Event
+import com.daniel.calendarapp.databinding.CalendarMonthCellBinding
 
 interface CalendarMonthClickListener{
     fun onDayClicked(day: Int)

@@ -1,4 +1,4 @@
-package com.daniel.ks.CalendarView
+package com.daniel.calendarapp.CalendarView
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -8,24 +8,21 @@ import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
-import com.daniel.ks.AlarmView.AlarmActivity
-import com.daniel.ks.MainActivity
-import com.daniel.ks.NewEntry.NewEventReceiver
-import com.daniel.ks.R
-import com.daniel.ks.Room.Event
-import com.daniel.ks.Room.RoomRepo
-import com.daniel.ks.Utils.ALARM_EVENT_ID
-import com.daniel.ks.Utils.ALARM_REQUEST_CODE
-import com.daniel.ks.Utils.BaseFragment
-import com.daniel.ks.databinding.CalendarFragmentMonthBinding
-import com.daniel.ks.databinding.CalendarMonthCellBinding
+import com.daniel.calendarapp.AlarmView.AlarmActivity
+import com.daniel.calendarapp.NewEntry.NewEventReceiver
+import com.daniel.calendarapp.R
+import com.daniel.calendarapp.RoomObjects.Event
+import com.daniel.calendarapp.RoomObjects.RoomRepo
+import com.daniel.calendarapp.Utils.ALARM_EVENT_ID
+import com.daniel.calendarapp.Utils.ALARM_REQUEST_CODE
+import com.daniel.calendarapp.Utils.BaseFragment
+import com.daniel.calendarapp.databinding.CalendarFragmentMonthBinding
+import com.daniel.calendarapp.databinding.CalendarMonthCellBinding
 import org.joda.time.DateTime
-import org.joda.time.DateTimeUtils
 
 class CalendarFragment : BaseFragment<CalendarFragmentMonthBinding>(R.layout.calendar_fragment_month), NewEventReceiver, CalendarMonthClickListener {
 

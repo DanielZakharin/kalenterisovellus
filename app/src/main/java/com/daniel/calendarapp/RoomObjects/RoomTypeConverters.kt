@@ -1,10 +1,7 @@
-package com.daniel.ks.Room
+package com.daniel.calendarapp.RoomObjects
 
 import android.arch.persistence.room.TypeConverter
-import com.daniel.ks.Utils.toLocalTime
-import com.daniel.ks.Utils.toRoomString
 import org.joda.time.DateTime
-import org.joda.time.LocalTime
 
 class RoomTypeConverters {
     companion object {

@@ -1,4 +1,4 @@
-package com.daniel.ks.Room
+package com.daniel.calendarapp.RoomObjects
 
 import android.arch.lifecycle.LiveData
 import android.arch.persistence.room.*

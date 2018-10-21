@@ -1,4 +1,4 @@
-package com.daniel.ks.CalendarView
+package com.daniel.calendarapp.CalendarView
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
@@ -6,8 +6,8 @@ import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
 import android.databinding.ObservableField
 import android.view.View
-import com.daniel.ks.Room.RoomRepo
-import com.daniel.ks.Utils.ActionLiveData
+import com.daniel.calendarapp.RoomObjects.RoomRepo
+import com.daniel.calendarapp.Utils.ActionLiveData
 import org.joda.time.DateTime
 import java.lang.IllegalStateException
 

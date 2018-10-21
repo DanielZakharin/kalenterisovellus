@@ -1,14 +1,11 @@
-package com.daniel.ks.Utils
+package com.daniel.calendarapp.Utils
 
-import android.app.Activity
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.daniel.ks.MainViewModel
-import com.daniel.ks.R
-import com.daniel.ks.databinding.CalendarMonthCellBinding
+import com.daniel.calendarapp.MainViewModel
 
 abstract class BaseActivity<T: ViewDataBinding>(val layoutId: Int): AppCompatActivity(){
     lateinit var binding: T

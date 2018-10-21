@@ -1,16 +1,11 @@
-package com.daniel.ks
+package com.daniel.calendarapp
 
-import android.arch.lifecycle.ViewModelProviders
-import android.databinding.DataBindingUtil
-import android.os.Build
 import android.os.Bundle
-import android.support.transition.TransitionInflater
 import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
-import com.daniel.ks.CalendarView.CalendarFragment
-import com.daniel.ks.NewEntry.NewEventDialogFragment
-import com.daniel.ks.Utils.BaseActivity
-import com.daniel.ks.databinding.ActivityMainBinding
+import com.daniel.calendarapp.CalendarView.CalendarFragment
+import com.daniel.calendarapp.NewEntry.NewEventDialogFragment
+import com.daniel.calendarapp.Utils.BaseActivity
+import com.daniel.calendarapp.databinding.ActivityMainBinding
 
 private const val REQUEST_CODE = 9001
 

@@ -1,6 +1,5 @@
-package com.daniel.ks.Utils
+package com.daniel.calendarapp.Utils
 
-import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
@@ -10,8 +9,8 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.daniel.ks.MainActivity
-import com.daniel.ks.MainViewModel
+import com.daniel.calendarapp.MainActivity
+import com.daniel.calendarapp.MainViewModel
 import java.lang.IllegalStateException
 
 /**

@@ -1,4 +1,4 @@
-package com.daniel.ks
+package com.daniel.calendarapp
 
 import org.junit.Test
 

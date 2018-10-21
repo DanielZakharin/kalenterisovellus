@@ -1,4 +1,4 @@
-package com.daniel.ks.Utils
+package com.daniel.calendarapp.Utils
 
 import android.arch.lifecycle.LifecycleOwner
 import android.arch.lifecycle.MutableLiveData

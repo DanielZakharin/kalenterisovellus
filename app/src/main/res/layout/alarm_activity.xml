@@ -5,7 +5,7 @@
     <data>
         <variable
             name="event"
-            type="com.daniel.ks.Room.Event"/>
+            type="com.daniel.calendarapp.RoomObjects.Event"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -35,7 +35,7 @@
             app:layout_constraintStart_toStartOf="@id/title"
             app:layout_constraintTop_toBottomOf="@id/title"
             tools:text="10:30"
-            android:text="@{com.daniel.ks.Utils.DateUtilsKt.toUIString(event.alertTime)}"/>
+            android:text="@{com.daniel.calendarapp.Utils.DateUtilsKt.toUIString(event.alertTime)}"/>
 
         <Button
             android:id="@+id/dismiss"
