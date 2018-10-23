@@ -6,7 +6,11 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
+import android.widget.RemoteViewsService
 import android.widget.Toast
+import com.daniel.calendarapp.INTENT_EXTRA
+import com.daniel.calendarapp.Intents
+import com.daniel.calendarapp.MainActivity
 import com.daniel.calendarapp.R
 
 class CalendarAppWidgetProvider : AppWidgetProvider() {
@@ -28,7 +32,7 @@ class CalendarAppWidgetProvider : AppWidgetProvider() {
         return this == action.name
     }
 
-    private fun makePendingSelfIntent(context: Context, actionId: Actions) : PendingIntent{
+    private fun makePendingSelfIntent(context: Context, actionId: Actions): PendingIntent {
         val intent = Intent(context, javaClass)
         intent.action = actionId.name
         return PendingIntent.getBroadcast(context, 0, intent, 0)
@@ -40,6 +44,10 @@ class CalendarAppWidgetProvider : AppWidgetProvider() {
         when {
             intent.action.equalsAction(Actions.NEW) -> {
                 Toast.makeText(context, "CLICKED NEW", Toast.LENGTH_SHORT).show()
+                val newEventIntent = Intent(context, MainActivity::class.java).apply {
+                    putExtra(INTENT_EXTRA, Intents.NEW_EVENT)
+                }
+                context?.startActivity(newEventIntent)
             }
             intent.action.equalsAction(Actions.OPEN) -> {
                 Toast.makeText(context, "CLICKED OPEN", Toast.LENGTH_SHORT).show()
